@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "username": "jperez",
+        "email": "jperez@mercadolibre.com",
+        "password": "jperez123",
+        "first_name": "Juan",
+        "last_name": "Perez",
+        "phone_number": "1112345678",
+        "dni": "12345678"
+    },
+    {
+        "id": 2,
+        "username": "klopez",
+        "email": "klopez@mercadolibre.com",
+        "password": "klopez123",
+        "first_name": "Karina",
+        "last_name": "Lopez",
+        "phone_number": "1190123456",
+        "dni": "23456781"
+    },
+    {
+        "id": 3,
+        "username": "lsanchez",
+        "email": "lsanchez@mercadolibre.com",
+        "password": "lsanchez123",
+        "first_name": "Laura",
+        "last_name": "Sanchez",
+        "phone_number": "1178901234",
+        "dni": "34567812"
+    }
+]
