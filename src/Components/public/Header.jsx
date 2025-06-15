@@ -1,13 +1,36 @@
-
-
+//HOOKS_________
 import { useAuth } from '../../Context/AuthContext';
-import iconMeli from '../../assets/icon-meli.svg'
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+//ASSETS________
 import { FaShoppingCart } from 'react-icons/fa';
+import iconMeli from '../../assets/icon-meli.svg'
+//SERVICES________
+import { searchKeywordSuggestions } from '../../services/searchKeywordsService/searchKeywordsService';
 
 
-export default function Header() {
+export default function Header({ query, setQuery }) {
   const { isLoggedIn, logout } = useAuth();
+  const [suggestions, setSuggestions] = useState([]);
+
+
+useEffect(() => {
+  if (query.trim() === '') {
+    setSuggestions([]);
+    return;
+  }
+
+  const results = searchKeywordSuggestions(query);
+  setSuggestions(results);
+}, [query]);
+
+const handleSuggestionClick = (suggestion) => {
+console.log(suggestion,'suggestion')
+
+  setQuery(suggestion);
+  setSuggestions([]); // ocultar lista
+};
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -18,11 +41,11 @@ export default function Header() {
   const handleLogin = () => navigate('/login');
   const handleRegister = () => navigate('/register');
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const query = e.target.elements.search.value;
-    if (query) navigate(`/productos?search=${encodeURIComponent(query)}`);
-  };
+const handleSearch = (e) => {
+  e.preventDefault();
+  const searchTerm = e.target.elements.search.value.trim();
+  if (searchTerm) setQuery(searchTerm);
+};
 
   return (
     <header style={styles.header}>
@@ -40,10 +63,25 @@ export default function Header() {
       {/* Buscador */}
       <form onSubmit={handleSearch} style={styles.center}>
         <input
-          name="search"
-          placeholder="Buscar productos, marcas y más..."
-          style={styles.searchInput}
+        name="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Buscar productos, marcas y más..."
+        style={styles.searchInput}
         />
+        {suggestions.length > 0 && (
+  <ul style={styles.suggestionList}>
+    {suggestions.map((s, index) => (
+      <li
+        key={index}
+        onClick={() => handleSuggestionClick(s)}
+        style={styles.suggestionItem}
+      >
+        {s}
+      </li>
+    ))}
+  </ul>
+)}
         <button type="submit" style={styles.searchButton}>🔍</button>
       </form>
 
@@ -102,12 +140,13 @@ const styles = {
     fontSize: '13px',
     fontWeight: 'bold',
   },
-  center: {
-    flex: 1,
-    display: 'flex',
-    maxWidth: '600px',
-    margin: '10px 20px',
-  },
+center: {
+  flex: 1,
+  display: 'flex',
+  maxWidth: '600px',
+  margin: '10px 20px',
+  position: 'relative',
+},
   searchInput: {
     flex: 1,
     padding: '10px',
@@ -133,4 +172,22 @@ const styles = {
     cursor: 'pointer',
     color: '#333',
   },
+  suggestionList: {
+  position: 'absolute',
+  backgroundColor: 'white',
+  listStyle: 'none',
+  padding: '8px',
+  margin: '0',
+  boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+  width: '100%',
+  zIndex: 200,
+  borderRadius: '4px',
+  top: '100%',
+},
+
+suggestionItem: {
+  padding: '6px 10px',
+  cursor: 'pointer',
+  borderBottom: '1px solid #ddd',
+},
 };

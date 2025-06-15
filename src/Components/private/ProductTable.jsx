@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function ProductTable({ data = [] }) {
   const [products, setProducts] = useState([]);
-  const [query, setQuery] = useState('');
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 10;
@@ -12,14 +12,7 @@ export default function ProductTable({ data = [] }) {
     setCurrentPage(1);
   }, [data]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const filtered = data.filter(product =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setProducts(filtered);
-    setCurrentPage(1);
-  };
+
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const paginated = products.slice(
@@ -31,16 +24,7 @@ export default function ProductTable({ data = [] }) {
     <div style={styles.container}>
       <h2>Listado de Productos</h2>
 
-      <form onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar por nombre"
-          style={styles.searchInput}
-        />
-        <button type="submit" style={styles.searchButton}>Buscar</button>
-      </form>
+
 
       {products.length === 0 ? (
         <p>No se encontraron productos.</p>
