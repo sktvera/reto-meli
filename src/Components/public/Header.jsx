@@ -1,6 +1,14 @@
+
+
+import { useAuth } from '../../Context/AuthContext';
+import iconMeli from '../../assets/icon-meli.svg'
+
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
+
+import { FaShoppingCart } from 'react-icons/fa';
+
 
 export default function Header() {
   const { isLoggedIn, logout } = useAuth();
@@ -11,47 +19,53 @@ export default function Header() {
     navigate('/login');
   };
 
-  const handleLogin = () => {
-    navigate('/login');
-  };
+  const handleLogin = () => navigate('/login');
+  const handleRegister = () => navigate('/register');
 
   const handleSearch = (e) => {
     e.preventDefault();
     const query = e.target.elements.search.value;
-    if (query) {
-      navigate(`/productos?search=${encodeURIComponent(query)}`);
-    }
+    if (query) navigate(`/productos?search=${encodeURIComponent(query)}`);
   };
 
   return (
     <header style={styles.header}>
-      {/* Icono o Logo */}
-      <div style={styles.logo} onClick={() => navigate('/')}>
-        🛒 MiApp
+      {/* Logo + Ubicación */}
+      <div style={styles.left}>
+        <img
+          src={iconMeli}
+          alt="Mercado Libre"
+          style={styles.logo}
+          onClick={() => navigate('/')}
+        />
+      
       </div>
 
       {/* Buscador */}
-      <form style={styles.searchForm} onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} style={styles.center}>
         <input
           name="search"
-          type="text"
-          placeholder="Buscar productos..."
+          placeholder="Buscar productos, marcas y más..."
           style={styles.searchInput}
         />
-        <button type="submit" style={styles.searchButton}>Buscar</button>
+        <button type="submit" style={styles.searchButton}>🔍</button>
       </form>
 
-      {/* Menú de botones */}
-      <div style={styles.menu}>
+      {/* Menú usuario */}
+      <div style={styles.right}>
         {isLoggedIn ? (
           <>
-            <button style={styles.button} onClick={() => navigate('/productos')}>Productos</button>
-            <button style={styles.button} onClick={() => navigate('/favoritos')}>Favoritos</button>
-            <button style={styles.logoutButton} onClick={handleLogout}>Cerrar sesión</button>
+            <span style={styles.link} onClick={() => navigate('/mis-compras')}>Mis compras</span>
+            <span style={styles.link} onClick={handleLogout}>Cerrar sesión</span>
           </>
         ) : (
-          <button style={styles.button} onClick={handleLogin}>Login</button>
+          <>
+           
+            <span style={styles.link} onClick={handleLogin}>Ingresa</span>
+            <span style={styles.link} onClick={() => navigate('/mis-compras')}>Mis compras</span>
+          </>
         )}
+        <FaShoppingCart size={20} style={{ marginLeft: '16px', cursor: 'pointer' }} onClick={() => navigate('/carrito')} />
       </div>
     </header>
   );
@@ -59,58 +73,68 @@ export default function Header() {
 
 const styles = {
   header: {
+    backgroundColor: '#fff159',
     display: 'flex',
     alignItems: 'center',
-    padding: '10px 20px',
-    backgroundColor: '#f5f5f5',
     justifyContent: 'space-between',
-    borderBottom: '1px solid #ccc',
+    padding: '12px 24px',
     flexWrap: 'wrap',
+    borderBottom: '1px solid #e0e0e0',
+  },
+  left: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
   },
   logo: {
-    fontSize: '24px',
-    fontWeight: 'bold',
+    height: '36px',
     cursor: 'pointer',
   },
-  searchForm: {
+  location: {
     display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+  },
+  locationIcon: {
+    fontSize: '18px',
+  },
+  locationTextSmall: {
+    fontSize: '12px',
+    color: '#333',
+  },
+  locationTextBold: {
+    fontSize: '13px',
+    fontWeight: 'bold',
+  },
+  center: {
     flex: 1,
-    maxWidth: '400px',
-    margin: '10px',
+    display: 'flex',
+    maxWidth: '600px',
+    margin: '10px 20px',
   },
   searchInput: {
     flex: 1,
-    padding: '8px',
-    border: '1px solid #ccc',
+    padding: '10px',
+    border: 'none',
     borderRadius: '4px 0 0 4px',
+    fontSize: '14px',
   },
   searchButton: {
-    padding: '8px 12px',
-    border: '1px solid #ccc',
-    borderLeft: 'none',
+    padding: '10px 16px',
+    backgroundColor: '#ededed',
+    border: 'none',
     borderRadius: '0 4px 4px 0',
-    backgroundColor: '#007bff',
-    color: 'white',
     cursor: 'pointer',
+    fontSize: '16px',
   },
-  menu: {
+  right: {
     display: 'flex',
-    gap: '10px',
     alignItems: 'center',
+    gap: '16px',
   },
-  button: {
-    padding: '8px 12px',
-    backgroundColor: '#eee',
-    border: 'none',
-    borderRadius: '4px',
+  link: {
+    fontSize: '13px',
     cursor: 'pointer',
-  },
-  logoutButton: {
-    padding: '8px 12px',
-    backgroundColor: '#dc3545',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
+    color: '#333',
   },
 };

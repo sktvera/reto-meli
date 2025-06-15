@@ -3,7 +3,7 @@ import { useAuth } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../../Components/public/Header';
-import Footer from '../../components/public/Footer';
+import Footer from '../../Components/public/Footer/Footer';
 
 export default function LoginPage() {
   const { login } = useAuth();

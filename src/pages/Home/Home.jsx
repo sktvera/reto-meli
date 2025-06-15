@@ -1,5 +1,5 @@
 import Header from '../../Components/public/Header';
-import Footer from '../../components/public/Footer';
+import Footer from '../../Components/public/Footer/Footer';
 
 export default function Home({ children }) {
   return (
