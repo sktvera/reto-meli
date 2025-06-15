@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 //COMPONENTES________
 import Header from '../../Components/public/Header';
 import Footer from '../../Components/public/Footer/Footer';
-import ProductTable from '../../Components/private/ProductTable';
+import ProductTable from '../../Components/private/ProductTable/ProductTable';
 //SERVICES________
 import { getProducts } from '../../services/productService';
 import { getFeaturedProducts } from '../../services/featuredProductsService';
@@ -51,45 +51,19 @@ const filteredProducts = allProducts.filter((product) => {
 });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh',backgroundColor:'#f5f5f5' }}>
      <Header query={query} setQuery={setQuery} />
 
       <main style={{ flex: 1, padding: '20px' }}>
         <div style={{ marginBottom: '20px' }}>
-          <label>Filtrar productos: </label>
-          <select
-            value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
-            style={{ marginLeft: '10px', padding: '5px' }}
-          >
-            <option value="all">Todos</option>
-            <option value="common">Solo comunes</option>
-            <option value="featured">Solo destacados</option>
-          </select>
+
+        
         </div>
 
-        <ProductTable data={filteredProducts} />
+        <ProductTable setFilterType={setFilterType} filterType={filterType} data={filteredProducts} />
       </main>
 
       <Footer />
     </div>
   );
 }
-
-
-
-
-/*   category_id
-
-
-MLA1055 celular
-MLA109085 buzo
-zapatillas MLA3724
-paleta de tenis pinpong MLA12220
-tijeras de camping MLA105432
-zapatillas adidas MLA109027
-aro flex pilates MLA416562
-mochila MLA120350
-antiparra gafas  MLA417271
-venda de boxeo MLA413713
-ojostas sandalias MLA416005 */
