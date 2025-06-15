@@ -1,16 +1,27 @@
 // utils/auth.js
-export function login(username, password) {
-  // Simular login exitoso
-  if (username === 'julian' && password === '1234') {
-    const fakeToken = btoa(`${username}:${Date.now()}`);
+import users from '../mocks/users.json';
+
+export function login(credential, password) {
+  // Buscar por username o email
+  const foundUser = users.find(
+    (user) =>
+      (user.username === credential || user.email === credential) &&
+      user.password === password
+  );
+
+  if (foundUser) {
+    const fakeToken = btoa(`${foundUser.username}:${Date.now()}`);
     localStorage.setItem('auth_token', fakeToken);
+    localStorage.setItem('user', JSON.stringify(foundUser));
     return true;
   }
+
   return false;
 }
 
 export function logout() {
   localStorage.removeItem('auth_token');
+  localStorage.removeItem('user');
 }
 
 export function isAuthenticated() {

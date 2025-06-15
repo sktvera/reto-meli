@@ -2,11 +2,7 @@
 
 import { useAuth } from '../../Context/AuthContext';
 import iconMeli from '../../assets/icon-meli.svg'
-
-
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { FaShoppingCart } from 'react-icons/fa';
 
 
