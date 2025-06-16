@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 //COMPONENTES________
 import Header from '../../Components/public/Header';

@@ -1,3 +1,4 @@
+import React from 'react';
 import iconMeli from '../../../assets/icon-meli.svg'
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import styles from './styles/FooterStyles';

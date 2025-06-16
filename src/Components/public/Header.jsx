@@ -1,3 +1,4 @@
+import React from 'react';
 //HOOKS_________
 import { useAuth } from '../../Context/AuthContext';
 import { useEffect, useState } from 'react';
