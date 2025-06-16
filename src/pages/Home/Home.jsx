@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 //COMPONENTES________
 import Header from '../../Components/public/Header/Header';
 import Footer from '../../Components/public/Footer/Footer';
@@ -7,26 +7,27 @@ import ProductTable from '../../Components/private/ProductTable/ProductTable';
 //SERVICES________
 import { getProducts } from '../../services/productService';
 import { getFeaturedProducts } from '../../services/featuredProductsService';
-
 import{categoryMap} from '../../services/searchKeywordsService/dictionary/categoryMap'
 
 export default function Home() {
 
   const [query, setQuery] = useState('');
-  const [allProducts, setAllProducts] = useState([]);
-  const [filterType, setFilterType] = useState('all'); // 'all' | 'common' | 'featured'
+  const [allProducts, setAllProducts] = useState([]);// guarda los datos de los servicios
+  const [filterType, setFilterType] = useState('all'); // 'all' | 'common' | 'featured'[Filtro dinamico carga de datos]
 
   useEffect(() => {
     const loadData = () => {
+      //llamado de los servicios______
       const common = getProducts();
       const featured = getFeaturedProducts();
 
+      //Condicion de ordemiento por servicio____
       if (filterType === 'common') {
         setAllProducts(common);
       } else if (filterType === 'featured') {
         setAllProducts(featured);
       } else {
-        // combinación por defecto
+        //Combina los datos de ambos servicios____
         const merged = [...common, ...featured];
         setAllProducts(merged);
       }
@@ -37,21 +38,22 @@ export default function Home() {
 
 
 
-const filteredProducts = allProducts.filter((product) => {
-  const categoryId = product?.category_id || '';
-  const name = product?.name || product?.title || '';
+//Buscador dinamico// selecciona una categoria y lo compara contra el diccionario para retornar los productos disponibles que coinciden
 
-  // Verifica si el query coincide con alguna clave del categoryMap
-  const categoryIdFromQuery = categoryMap[query];
 
-  if (categoryIdFromQuery) {
-    // Si existe, se trata de una búsqueda por categoría
-    return categoryId === categoryIdFromQuery;
-  }
+const filteredProducts = useMemo(() => {
+  return allProducts.filter((product) => {
+    const categoryId = product?.category_id || '';
+    const name = product?.name || product?.title || '';
+    const categoryIdFromQuery = categoryMap[query];
 
-  // Si no, se trata de una búsqueda por nombre
-  return name.toLowerCase().includes(query.toLowerCase());
-});
+    if (categoryIdFromQuery) {
+      return categoryId === categoryIdFromQuery;
+    }
+
+    return name.toLowerCase().includes(query.toLowerCase());
+  });
+}, [allProducts, query]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh',backgroundColor:'#f5f5f5' }}>

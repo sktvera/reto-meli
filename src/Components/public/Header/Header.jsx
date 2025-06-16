@@ -5,58 +5,51 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //ASSETS________
 import iconMeli from '../../../assets/icon-meli.svg'
-import {
-  HeaderContainer,
-  LeftSection,
-  Logo,
-  CenterForm,
-  SearchInput,
-  SearchButton,
-  RightSection,
-  LinkSpan,
-  SuggestionList,
-  SuggestionItem
-} from './styles/HeaderStyles';
+import { HeaderContainer, LeftSection, Logo, CenterForm, SearchInput, SearchButton, RightSection, LinkSpan, SuggestionList, SuggestionItem} from './styles/HeaderStyles';
 //SERVICES________
 import { searchKeywordSuggestions } from '../../../services/searchKeywordsService/searchKeywordsService';
 
-
 export default function Header({ query = '', setQuery }) {
-  const { isLoggedIn, logout } = useAuth();
-  const [suggestions, setSuggestions] = useState([]);
+
+  const navigate = useNavigate();
+  const { isLoggedIn, logout } = useAuth(); //manejo de sesion, usuario logueado
+  const [suggestions, setSuggestions] = useState([]);//catgorias disponibles
+  const [category, setCategory] = useState('');//valor del input
 
 
+//recibe los datos del buscador, despliega las categorias que coinciden con los datos escritos en el buscador 
 useEffect(() => {
-  if (query.trim() === '') {
+  if (category.trim() === '') {
     setSuggestions([]);
     return;
   }
-
-  const results = searchKeywordSuggestions(query);
+  const results = searchKeywordSuggestions(category);
   setSuggestions(results);
-}, [query]);
+}, [category]);
 
+
+//Despliega las categorias y guarda una categoria
 const handleSuggestionClick = (suggestion) => {
-
   setQuery(suggestion);
   setSuggestions([]); // ocultar lista
+  
 };
 
-  const navigate = useNavigate();
-
+  //CERRAR SESION USUARIO
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
-
+  //Redicecciona al login
   const handleLogin = () => navigate('/login');
-  const handleRegister = () => navigate('/register');
+  
+/*   const handleRegister = () => navigate('/register') */;
 
-const handleSearch = (e) => {
-  e.preventDefault();
-  const searchTerm = e.target.elements.search.value.trim();
-  if (searchTerm) setQuery(searchTerm);
-};
+const handleSubmit = (e)=>{
+   e.preventDefault();
+  const inputValue = e.target.elements.search.value;
+  setQuery(inputValue)
+}
 
   return (
     <HeaderContainer>
@@ -68,13 +61,14 @@ const handleSearch = (e) => {
         />
       </LeftSection>
 
-      <CenterForm onSubmit={handleSearch}>
+      <CenterForm onSubmit={handleSubmit} >
         <SearchInput
           name="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => setCategory(e.target.value)}
+       value={category}
           placeholder="Buscar productos, marcas y más..."
         />
+        {/* ITERA Y SELECCIONA LAS CATEORIAS DISPONIBLES */}
         {suggestions.length > 0 && (
           <SuggestionList>
             {suggestions.map((s, index) => (
@@ -87,9 +81,10 @@ const handleSearch = (e) => {
             ))}
           </SuggestionList>
         )}
-        <SearchButton type="submit">🔍</SearchButton>
+        <SearchButton   type="submit">🔍</SearchButton>
       </CenterForm>
 
+    {/* BOTONES DE ACCION NAVBAR  */}
       <RightSection>
         {isLoggedIn ? (
           <LinkSpan onClick={handleLogout}>Salir</LinkSpan>
