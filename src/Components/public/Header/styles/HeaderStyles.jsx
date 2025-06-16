@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  background-color: #fff159;
+  background-color: #ffe600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,6 +56,7 @@ export const LinkSpan = styled.span`
   font-size: 13px;
   cursor: pointer;
   color: #333;
+    font-family: Arial, sans-serif;
 `;
 
 export const SuggestionList = styled.ul`

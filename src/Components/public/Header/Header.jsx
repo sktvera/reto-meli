@@ -37,7 +37,6 @@ useEffect(() => {
 }, [query]);
 
 const handleSuggestionClick = (suggestion) => {
-console.log(suggestion,'suggestion')
 
   setQuery(suggestion);
   setSuggestions([]); // ocultar lista
@@ -93,7 +92,7 @@ const handleSearch = (e) => {
 
       <RightSection>
         {isLoggedIn ? (
-          <LinkSpan onClick={handleLogout}>Cerrar sesión</LinkSpan>
+          <LinkSpan onClick={handleLogout}>Salir</LinkSpan>
         ) : (
           <LinkSpan onClick={handleLogin}>Ingresa</LinkSpan>
         )}

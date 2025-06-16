@@ -41,13 +41,15 @@ const filteredProducts = allProducts.filter((product) => {
   const categoryId = product?.category_id || '';
   const name = product?.name || product?.title || '';
 
-  // Si el query es exactamente un ID de categoría, filtra por categoría
-  const isCategorySearch = Object.values(categoryMap).includes(query);
+  // Verifica si el query coincide con alguna clave del categoryMap
+  const categoryIdFromQuery = categoryMap[query];
 
-  if (isCategorySearch) {
-    return categoryId === query;
+  if (categoryIdFromQuery) {
+    // Si existe, se trata de una búsqueda por categoría
+    return categoryId === categoryIdFromQuery;
   }
 
+  // Si no, se trata de una búsqueda por nombre
   return name.toLowerCase().includes(query.toLowerCase());
 });
 

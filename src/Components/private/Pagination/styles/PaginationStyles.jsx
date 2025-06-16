@@ -25,7 +25,10 @@ export const PageButton = styled.button`
       border: 2px solid #3483fa;
       color: #3483fa;
       font-weight: bold;
-    `}
+    `} &:hover {
+    background-color: #007bff2d;
+   
+  }
 `;
 
 export const NextButton = styled.button`
@@ -35,4 +38,8 @@ export const NextButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  &:hover {
+    background-color: #007bff2d;
+   border-radius: 8px;
+  }
 `;
