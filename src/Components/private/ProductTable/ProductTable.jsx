@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Pagination from '../Pagination'
-import ProductFilter from '../ProductFilter';
+import Pagination from '../Pagination/Pagination'
+import ProductFilter from '../ProductFilter/ProductFilter';
 import {Container,Card,Image,Info,Title,Price,Condition,Seller, Location, Link} from './styles/ProductTableStyles';
 
 

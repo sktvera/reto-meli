@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 //COMPONENTES________
-import Header from '../../Components/public/Header';
+import Header from '../../Components/public/Header/Header';
 import Footer from '../../Components/public/Footer/Footer';
 import ProductTable from '../../Components/private/ProductTable/ProductTable';
 //SERVICES________
@@ -54,16 +54,9 @@ const filteredProducts = allProducts.filter((product) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh',backgroundColor:'#f5f5f5' }}>
      <Header query={query} setQuery={setQuery} />
-
       <main style={{ flex: 1, padding: '20px' }}>
-        <div style={{ marginBottom: '20px' }}>
-
-        
-        </div>
-
         <ProductTable setFilterType={setFilterType} filterType={filterType} data={filteredProducts} />
       </main>
-
       <Footer />
     </div>
   );

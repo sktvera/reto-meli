@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-import Header from '../../Components/public/Header';
+import Header from '../../Components/public/Header/Header';
 import Footer from '../../Components/public/Footer/Footer';
 
 export default function LoginPage() {
