@@ -68,6 +68,7 @@ const handleSubmit = (e)=>{
        value={category}
           placeholder="Buscar productos, marcas y más..."
         />
+        <SearchButton type="submit">🔍</SearchButton>
         {/* ITERA Y SELECCIONA LAS CATEORIAS DISPONIBLES */}
         {suggestions.length > 0 && (
           <SuggestionList>
@@ -81,7 +82,7 @@ const handleSubmit = (e)=>{
             ))}
           </SuggestionList>
         )}
-        <SearchButton   type="submit">🔍</SearchButton>
+       
       </CenterForm>
 
     {/* BOTONES DE ACCION NAVBAR  */}

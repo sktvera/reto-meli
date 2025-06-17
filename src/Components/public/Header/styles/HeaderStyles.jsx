@@ -30,20 +30,33 @@ export const CenterForm = styled.form`
 `;
 
 export const SearchInput = styled.input`
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 4px 0 0 4px;
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+
+  &:focus {
+    border-color: #1196ef;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); 
+  }
 `;
 
 export const SearchButton = styled.button`
-  padding: 10px 16px;
-  background-color: #ededed;
+cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  background: none;
   border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  font-size: 16px;
+
+  font-size: 18px;
+  color: #555;
+  z-index: 10;
 `;
 
 export const RightSection = styled.div`
