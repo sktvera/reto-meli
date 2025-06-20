@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/Login/Login';
 import Home from './pages/Home/Home.jsx';
 
-import PrivateRoute from './components/public/PrivateRoute.jsx';
+import PrivateRoute from '../components/public/PrivateRoute.jsx';
 
 export default function App() {
   return (
