@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from '../pages/Home/Home';
+import Home from '../pages/Home/Home.jsx';
 import { MemoryRouter } from 'react-router-dom';
 
 // ✅ Simular contexto de autenticación
