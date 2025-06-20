@@ -39,8 +39,6 @@ export default function Home() {
 
 
 //Buscador dinamico// selecciona una categoria y lo compara contra el diccionario para retornar los productos disponibles que coinciden
-
-
 const filteredProducts = useMemo(() => {
   return allProducts.filter((product) => {
     const categoryId = product?.category_id || '';

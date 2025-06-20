@@ -1,19 +1,29 @@
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/Login/Login';
 import Home from './pages/Home/Home';
-import PrivateRoute from './components/public/PrivateRoute';
+import Home from './pages/profile/profile';
+
+import PrivateRoute from './components/public/PrivateRoute.jsx';
 
 export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route
-        path="/"
-        element={
-          <PrivateRoute>
-            <Home />
-          </PrivateRoute>
-        }
+      path="/"
+      element={
+      <PrivateRoute>
+      <Home />
+      </PrivateRoute>
+      }
+      />
+      <Route
+      path="/profile"
+      element={
+      <PrivateRoute>
+      <Home />
+      </PrivateRoute>
+      }
       />
     </Routes>
   );

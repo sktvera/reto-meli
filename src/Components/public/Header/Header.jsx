@@ -40,6 +40,10 @@ const handleSuggestionClick = (suggestion) => {
     logout();
     navigate('/login');
   };
+
+    const handleProfile = () => {
+    navigate('/profile');
+  };
   //Redicecciona al login
   const handleLogin = () => navigate('/login');
   
@@ -88,7 +92,11 @@ const handleSubmit = (e)=>{
     {/* BOTONES DE ACCION NAVBAR  */}
       <RightSection>
         {isLoggedIn ? (
+          <>
+          <LinkSpan onClick={handleProfile} >Perfil</LinkSpan>
           <LinkSpan onClick={handleLogout}>Salir</LinkSpan>
+          </>
+          
         ) : (
           <LinkSpan onClick={handleLogin}>Ingresa</LinkSpan>
         )}
