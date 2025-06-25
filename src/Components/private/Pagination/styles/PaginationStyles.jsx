@@ -1,3 +1,9 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Pagination styles for the Pagination component
+* @date 2025-06-24
+ */
+
 import styled, { css } from 'styled-components';
 
 export const PaginationContainer = styled.div`
@@ -9,7 +15,10 @@ export const PaginationContainer = styled.div`
   gap: 4px;
 `;
 
-export const PageButton = styled.button`
+//  Filtrar la prop `isActive` para que no llegue al DOM
+export const PageButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isActive',
+})`
   padding: 8px 12px;
   font-size: 14px;
   background-color: transparent;
@@ -25,9 +34,10 @@ export const PageButton = styled.button`
       border: 2px solid #3483fa;
       color: #3483fa;
       font-weight: bold;
-    `} &:hover {
+    `}
+
+  &:hover {
     background-color: #007bff2d;
-   
   }
 `;
 
@@ -38,8 +48,9 @@ export const NextButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+
   &:hover {
     background-color: #007bff2d;
-   border-radius: 8px;
+    border-radius: 8px;
   }
 `;

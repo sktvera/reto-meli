@@ -1,4 +1,11 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Product filter component for sorting products
+* @date 2025-06-24
+ */
+
 import React from 'react';
+//ASSETS________
 import {
   FilterWrapper,
   FilterLabel,

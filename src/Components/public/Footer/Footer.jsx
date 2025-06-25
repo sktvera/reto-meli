@@ -1,4 +1,11 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Footer component for the public pages of the application
+* @date 2025-06-24
+ */
+
 import React from 'react';
+//ASSETS________
 import iconMeli from '../../../assets/icon-meli.svg'
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import styles from './styles/FooterStyles';

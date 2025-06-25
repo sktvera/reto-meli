@@ -1,3 +1,9 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Header component for the public section of the application
+* @date 2025-06-24
+ */
+
 import React from 'react';
 //HOOKS_________
 import { useAuth } from '../../../Context/AuthContext';
@@ -9,7 +15,7 @@ import { HeaderContainer, LeftSection, Logo, CenterForm, SearchInput, SearchButt
 //SERVICES________
 import { searchKeywordSuggestions } from '../../../services/searchKeywordsService/searchKeywordsService';
 
-export default function Header({ query = '', setQuery }) {
+export default function Header({ setQuery }) {
 
   const navigate = useNavigate();
   const { isLoggedIn, logout } = useAuth(); //manejo de sesion, usuario logueado

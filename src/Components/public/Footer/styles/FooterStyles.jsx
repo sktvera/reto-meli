@@ -1,3 +1,9 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Styled components for the Footer section of the website
+* @date 2025-06-24
+ */
+import React from 'react';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`

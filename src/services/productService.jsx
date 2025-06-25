@@ -1,4 +1,9 @@
-// src/services/productService.js
+/**
+ * @author Julian David Vera Godoy
+ * @description Service for managing product data
+* @date 2025-06-24
+ */
+
 import data from '../mocks/results.json';
 
 export function getProducts(query = '') {
@@ -28,7 +33,7 @@ export function extractAttributes(product) {
   }, {});
 }
 
-// ✅ Esta es la función que te falta exportar:
+
 export function getPaging() {
   return data.paging;
 }

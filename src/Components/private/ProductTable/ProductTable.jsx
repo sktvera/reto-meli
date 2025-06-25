@@ -1,7 +1,16 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Product table component for displaying products with pagination and filtering
+* @date 2025-06-24
+ */
+
 import React from 'react';
+//HOOKS_________
 import { useEffect, useState } from 'react';
+//COMPONENTES________
 import Pagination from '../Pagination/Pagination'
 import ProductFilter from '../ProductFilter/ProductFilter';
+//ASSETS________
 import {Container,Card,Image,Info,Title,Price,Condition,Seller, Location, Link, Brand, Installments, FreeShipping} from './styles/ProductTableStyles';
 
 

@@ -1,3 +1,9 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Styled components for the Header component
+* @date 2025-06-24
+ */
+import React from 'react';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`

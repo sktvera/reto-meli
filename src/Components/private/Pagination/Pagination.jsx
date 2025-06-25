@@ -1,4 +1,11 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Pagination component for displaying page numbers and navigation
+* @date 2025-06-24
+ */
+
 import React from 'react';
+//ASSETS________
 import { PaginationContainer, PageButton, NextButton } from './styles/PaginationStyles';
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {

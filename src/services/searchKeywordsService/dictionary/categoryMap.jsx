@@ -1,3 +1,10 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Map of product categories to their respective Mercado Libre category IDs
+* @date 2025-06-24
+ */
+
+import React from 'react';
 export  const categoryMap = {
   "Celular": "MLA1055",
   "Zapatillas": "MLA3724",

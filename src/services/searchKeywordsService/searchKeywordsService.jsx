@@ -1,3 +1,9 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Service for managing search keyword suggestions
+* @date 2025-06-24
+ */
+import React from 'react';
 import keywords from '../../mocks/search-recommendation.json';
 
 /**

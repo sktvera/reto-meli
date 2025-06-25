@@ -1,5 +1,12 @@
-// context/AuthContext.jsx
-import { createContext, useContext, useEffect, useState } from 'react';
+/**
+ * @author Julian David Vera Godoy
+ * @description Context for managing authentication state in a React application
+* @date 2025-06-24
+ */
+import React from 'react';
+//HOOKS________
+import { createContext, useContext, useState } from 'react';
+//UTILS________
 import { isAuthenticated, logout, login as doLogin } from '../utils/auth';
 
 const AuthContext = createContext();

@@ -1,4 +1,10 @@
+/**
+ * @author Julian David Vera Godoy
+ * @description Home page component that displays products and allows filtering
+* @date 2025-06-24
+ */
 import React from 'react';
+//HOOKS_________
 import { useEffect, useState, useMemo } from 'react';
 //COMPONENTES________
 import Header from '../../Components/public/Header/Header';
@@ -55,10 +61,8 @@ const filteredProducts = useMemo(() => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh',backgroundColor:'#f5f5f5' }}>
-     <Header query={query} setQuery={setQuery} />
-      <main style={{ flex: 1, padding: '20px' }}>
-        <ProductTable setFilterType={setFilterType} filterType={filterType} data={filteredProducts} />
-      </main>
+     <Header setQuery={setQuery} />
+        <ProductTable style={{ flex: 1, padding: '20px' }} setFilterType={setFilterType} filterType={filterType} data={filteredProducts} />
       <Footer />
     </div>
   );

@@ -103,3 +103,36 @@ Ejemplo: price_asc → Menor precio.
 	•	Mostrar filters como tags aplicados o en filtros activos.
 	•	Ofrecer available_filters como opciones interactivas.
 	•	Implementar paginación basada en paging.
+
+
+
+  ___________________________________________________________________________
+
+🧾 Descripción General
+
+reto-meli es una aplicación web desarrollada con React, estructurada según las mejores prácticas de componentes, rutas protegidas, contexto global de autenticación y pruebas automatizadas. El propósito del proyecto es simular o replicar funcionalidades similares a las vistas en plataformas como Mercado Libre, permitiendo autenticación, filtrado de productos, paginación y renderizado dinámico de resultados.
+
+
+  .
+├── dist/                         # Archivos generados por Vite para producción
+├── public/                      # Recursos estáticos accesibles públicamente
+├── src/                         # Código fuente principal de la aplicación
+│   ├── assets/                  # Archivos SVG e imágenes usadas en la UI
+│   ├── Components/             # Componentes reutilizables (públicos y privados)
+│   ├── Context/                # Contextos globales de React (ej: autenticación)
+│   ├── mocks/                  # Datos simulados para pruebas/desarrollo
+│   ├── pages/                  # Vistas principales de la aplicación
+│   ├── services/               # Lógica de acceso a datos y APIs simuladas
+│   ├── tests/                  # Pruebas unitarias y de integración
+│   ├── utils/                  # Funciones utilitarias (autenticación, etc.)
+├── index.html                  # Punto de entrada HTML
+├── vite.config.js              # Configuración de Vite
+├── package.json                # Dependencias y scripts del proyecto
+├── README.md                   # Documentación inicial del proyecto
+
+
+npm run dev      # Inicia servidor Vite en desarrollo
+npm run build    # Compila el proyecto para producción
+npm run test     # Ejecuta las pruebas con Jest
+
+

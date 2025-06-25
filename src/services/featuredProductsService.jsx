@@ -1,6 +1,10 @@
-// src/services/featuredProductsService.js
+/**
+ * @author Julian David Vera Godoy
+ * @description Service for managing featured products
+* @date 2025-06-24
+ */
+import React from 'react';
 import data from '../mocks/items.json';
-
 // Devuelve todos los productos o filtra por query
 export function getFeaturedProducts(query = '') {
   if (!query) return data;
